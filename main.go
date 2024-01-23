@@ -6,6 +6,7 @@ import (
 	"log"
 	"os"
 	"sort"
+	"time"
 )
 
 type Contact struct {
@@ -20,8 +21,9 @@ type Contact struct {
 }
 
 func main() {
+	start := time.Now()
 
-	f, err := os.Open("us-contacts.csv")
+	f, err := os.Open("10000.csv")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -51,6 +53,9 @@ func main() {
 	for i := 0; i < len(contactList); i += 50 {
 		fmt.Printf("%+v\n", contactList[i])
 	}
+
+	elapsed := time.Since(start)
+	fmt.Printf("%s", elapsed)
 
 }
 
